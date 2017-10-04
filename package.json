@@ -1,0 +1,33 @@
+{
+  "name": "@movilizame/networking",
+  "version": "0.0.1",
+  "description": "Network utilities for Vue-UI",
+  "main": "main.js",
+  "jsnext:main": "main.mjs",
+  "browser": "main.browser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js"
+  },
+  "keywords": [
+    "network",
+    "axios"
+  ],
+  "author": "Mariano Botta <marianoabotta@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.23.0",
+    "babel-plugin-transform-es2015-function-name": "^6.24.1",
+    "babel-plugin-transform-es2015-parameters": "^6.24.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "del": "^3.0.0",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-uglify": "^2.0.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2"
+  }
+}

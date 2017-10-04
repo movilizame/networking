@@ -1,2 +1,4 @@
-# networking
-Network utilities 
+# Movilizame Networking
+
+npm install
+npm run build
