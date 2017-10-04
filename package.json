@@ -1,10 +1,8 @@
 {
   "name": "@movilizame/networking",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Network utilities for Vue-UI",
-  "main": "main.js",
-  "jsnext:main": "main.mjs",
-  "browser": "main.browser.js",
+  "main": "main.js", 
   "repository": "https://github.com/movilizame/networking",
   "private": false,
   "scripts": {
