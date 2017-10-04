@@ -5,6 +5,8 @@
   "main": "main.js",
   "jsnext:main": "main.mjs",
   "browser": "main.browser.js",
+  "repository": "https://github.com/movilizame/networking",
+  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "node build.js"
