@@ -2,7 +2,7 @@
 
 // import TaggedList from '../classes/TaggedList';
 import axios from 'axios';
-import {NetworkRequest, processResponse} from './NetworkRequest.js'
+import { NetworkResponse } from './NetworkResponse.js'
 
 export class Network {
     
@@ -36,7 +36,7 @@ export class Network {
             }
         );
 
-        return processResponse(response, source);
+        return NetworkResponse.processResponse(response, source);
     }
 
     post (url, body, headers = {}) {
@@ -49,7 +49,7 @@ export class Network {
                 cancelToken: source.token
             }
         );
-        return processResponse(response, source);
+        return NetworkResponse.processResponse(response, source);
     }
 
     delete (url, params, headers = {}) {
@@ -62,7 +62,7 @@ export class Network {
                 cancelToken: source.token
             }
         );
-        return processResponse(response, source);
+        return NetworkResponse.processResponse(response, source);
     }
 
     put (url, body, headers = {}) {
@@ -75,7 +75,7 @@ export class Network {
                 cancelToken: source.token
             }
         );
-        return processResponse(response, source);
+        return NetworkResponse.processResponse(response, source);
     }
 }
 
