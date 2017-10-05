@@ -10,7 +10,7 @@ function runContext (data) {
 export class Thread {
     constructor (options = {}) {
         this.id = null;
-        this.fn = options.callback || null;
+        this.fn = options.action || null;
         this.interval = options.interval || 10000;
         this.runImmediately = options.runImmediately || false;
         this.tags = arrayItem(options.tags || ['__GLOBAL__']);
