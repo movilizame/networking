@@ -15,6 +15,11 @@ export class Thread {
         this.runImmediately = options.runImmediately || false;
         this.tags = arrayItem(options.tags || ['__GLOBAL__']);
         this.times = 0;
+        this.ajaxList = [];
+    }
+
+    static start(options) {
+        return new Thread(options).run();
     }
 
     tag (tags) {
@@ -66,23 +71,39 @@ export class Thread {
 
     exec(data) {  
         let context = {
+            // Number un execution (if some threads must run only a determinate times)
+            times: this.times++,
+            // contextual params
+            data: data,
+
+            // function to prevent thread to re run
             next: (function (err) {
-                if (!err) {
+                if (arguments.length === 0) {
                     this.id = setTimeout(runContext.bind(this, data), this.interval);
                 } else {
-                    this.stop();
+                    this.abort(err == true);
                 }
-
             }).bind(this),
-            times: this.times++,
-            data: data
+
+            // register some abortable object to abort when thread abort
+            register: (function (xhr) {
+                this.ajaxList.push(xhr);
+            }).bind(this),
         };
         this.fn(context);
     }
 
-    stop () {
-        clearInterval(this.id);
+    abort (abortList = true) {
+        clearTimeout(this.id);
         taggedList.deleteAll(this);
+        if (abortList) {
+            this.ajaxList.forEach((xhr) => {
+                console.log('Aborting...', xhr.abort)
+                if (xhr.abort) {
+                    xhr.abort();
+                }
+            });
+        }
         return this;
     }
 
