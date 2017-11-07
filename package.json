@@ -1,6 +1,6 @@
 {
   "name": "@movilizame/networking",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Network utilities for Vue-UI",
   "main": "main.js", 
   "repository": "https://github.com/movilizame/networking",

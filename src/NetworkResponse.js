@@ -40,7 +40,7 @@ export class NetworkResponse{
                     let status = resp.response.status;
                     reject({ data, status });
                 } else {
-                    reject(resp);
+                    reject();
                 }
             });
         }, cancelToken);
