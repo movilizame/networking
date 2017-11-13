@@ -3,7 +3,7 @@
 // import TaggedList from '../classes/TaggedList';
 import axios from 'axios';
 import { NetworkResponse } from './NetworkResponse.js'
-
+import { Thread } from './Thread'; 
 export class Network {
     
     constructor (baseUrl) {
@@ -95,8 +95,7 @@ export class Network {
                     }
                 });
             };
-            let t = new Thread({ interval, runImmediately });
-            t.action(threadAction).run();
+            let t = (new Thread({ interval, runImmediately })).action(threadAction).run();
         });
     }
 }
