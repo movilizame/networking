@@ -37,7 +37,7 @@ export class Thread {
         return this;
     }
 
-    runImmediately() {
+    runNow() {
         this.runImmediately = true;
         return this;
     }
