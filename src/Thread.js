@@ -16,6 +16,7 @@ export class Thread {
         this.tags = arrayItem(options.tags || ['__GLOBAL__']);
         this.times = 0;
         this.ajaxList = [];
+        this.aborted = false;
     }
 
     static start(options) {
@@ -79,7 +80,9 @@ export class Thread {
             // function to prevent thread to re run
             next: (function (err) {
                 if (arguments.length === 0) {
-                    this.id = setTimeout(runContext.bind(this, data), this.interval);
+                    if (!this.aborted) {
+                        this.id = setTimeout(runContext.bind(this, data), this.interval);
+                    }
                 } else {
                     this.abort(err == true);
                 }
@@ -96,6 +99,7 @@ export class Thread {
     abort (abortList = true) {
         clearTimeout(this.id);
         taggedList.deleteAll(this);
+        this.aborted = true;
         if (abortList) {
             this.ajaxList.forEach((xhr) => {
                 console.log('Aborting...', xhr.abort)
