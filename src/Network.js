@@ -3,7 +3,7 @@
 // import TaggedList from '../classes/TaggedList';
 import axios from 'axios';
 import { NetworkResponse } from './NetworkResponse.js'
-
+import { Thread } from './Thread'; 
 export class Network {
     
     constructor (baseUrl) {
@@ -76,6 +76,27 @@ export class Network {
             }
         );
         return NetworkResponse.processResponse(response, source);
+    }
+
+    static doItInBackground (action, { retries = 10, interval = 5000, runImmediately = true }) {
+        return new Promise((resolve, reject) => {
+            let threadAction = function ({ next, times, data, register }) {
+                action().then((data) => {
+                    resolve(data);
+                }).catch((err) => {
+                    if (!err) {
+                        if (times < retries) {
+                            next();
+                        } else {
+                            reject();
+                        }
+                    } else {
+                        reject(err);
+                    }
+                });
+            };
+            let t = (new Thread({ interval, runImmediately })).action(threadAction).run();
+        });
     }
 }
 
