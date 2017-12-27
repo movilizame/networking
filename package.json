@@ -1,6 +1,6 @@
 {
   "name": "@movilizame/networking",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Network utilities for Vue-UI",
   "main": "main.js", 
   "browser": "main.js",
