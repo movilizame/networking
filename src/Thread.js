@@ -98,7 +98,6 @@ export class Thread {
         taggedList.deleteAll(this);
         if (abortList) {
             this.ajaxList.forEach((xhr) => {
-                console.log('Aborting...', xhr.abort)
                 if (xhr.abort) {
                     xhr.abort();
                 }
@@ -118,7 +117,7 @@ export class Thread {
             let list = taggedList.get(tag);
             if (list) {
                 list.forEach(thread => {
-                    clearTimeout(thread.id);
+                    thread.abort();
                 });
                 taggedList.deleteKey(tag);
             }

@@ -17,7 +17,7 @@ export class TagApi {
     }
 
     tag (tags) {
-        tags = arrayItem(tags); 
+        tags = arrayItem(tags);
         this._pushMany(tags);
         return this;
     }
