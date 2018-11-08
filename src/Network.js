@@ -88,7 +88,7 @@ export class Network {
                         if (times < retries) {
                             next();
                         } else {
-                            reject();
+                            reject('@NETWORKING_RETRY_TIME_OUT');
                         }
                     } else {
                         reject(err);

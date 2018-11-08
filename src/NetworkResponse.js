@@ -1,3 +1,4 @@
+import axios from 'axios';
 export class NetworkResponse{
 
     constructor (resolver, cancelToken) { 
@@ -41,12 +42,14 @@ export class NetworkResponse{
             response.then((response) => {
                 resolve(response.data);
             }).catch((resp) => { 
-                if (resp.response) {
+                if (axios.isCancel(resp)) {
+                    reject('@NETWORKING_AJAX_ABORT');
+                } else if (resp.response) {
                     let data = resp.response.data;
                     let status = resp.response.status;
                     reject({ data, status });
                 } else {
-                    reject();
+                    reject(resp);
                 }
             });
         }, cancelToken);
