@@ -24,7 +24,7 @@ export class NetworkResponse{
 
     finally (action) {
         let newResolver = this.promise.finally(action);
-        let myTempPromise = new NetworkResponse(newResolver, this.getCancelToken()); 
+        let myTempPromise = new NetworkResponse(newResolver, this.getCancelToken());
         return myTempPromise;
     }
 
