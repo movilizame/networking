@@ -57,6 +57,7 @@ export class Network {
         let response = axios.delete(
             this.API_URL + url,
             {
+                body: params,
                 params: params,
                 headers: this.mergeHeader(headers),
                 cancelToken: source.token
